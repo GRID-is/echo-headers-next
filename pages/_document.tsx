@@ -1,17 +1,12 @@
-import NextDocument, { Html, Head, Main, NextScript, DocumentContext } from 'next/document'
+import{ Html, Head, Main, NextScript } from 'next/document'
 
-Document.getInitialProps = async (ctx: DocumentContext) => {
-  const initialProps = await NextDocument.getInitialProps(ctx)
-  return { ...initialProps, nonce: ctx.req?.headers['x-nonce'] };
-}
-
-export default function Document({nonce}: {nonce: string | undefined}) {
+export default function Document() {
   return (
     <Html lang="en">
-      <Head nonce={nonce} />
+      <Head />
       <body>
         <Main />
-        <NextScript nonce={nonce} />
+        <NextScript />
       </body>
     </Html>
   )

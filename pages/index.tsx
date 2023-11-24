@@ -1,3 +1,5 @@
+import { NextPageContext } from "next";
+
 export default function Home({headers, timestamp}: {headers: any, timestamp: number}) {
   return (
     <>
@@ -14,8 +16,8 @@ export default function Home({headers, timestamp}: {headers: any, timestamp: num
   )
 }
 
-export async function getServerSideProps(ctx: any) {
+export async function getServerSideProps(ctx: NextPageContext) {
   return {
-    props: { headers: ctx.req.headers, timestamp: Date.now() },
+    props: { headers: ctx.req?.headers, timestamp: Date.now() },
   };
 }
